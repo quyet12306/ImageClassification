@@ -1,3 +1,16 @@
 /started
 /logs
 /.ipynb_checkpoints
+/img_save_by_flask
+/data
+/data3
+/data4
+/static
+app.py
+app2.py
+app3.py
+app4.py
+app5.py
+flask_test.ipynb
+test2.ipynb
+test3.ipynb
