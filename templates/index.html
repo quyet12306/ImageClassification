@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tải ảnh lên</title>
+	<style type="text/css">
+		#preview {
+			max-width: 500px;
+			max-height: 500px;
+			margin-top: 10px;
+			margin-bottom: 10px;
+		}
+        #img{
+            height: 100px;
+            width: 100px;
+        }
+        #myImg
+        {
+            height: 200px;
+            width: 200px;
+        }
+	</style>
+</head>
+<body>
+	
+    <form  action="/upload" ,method="post" enctype="multipart/form-data">
+        <input type="file" name="imagefile" class="form-control">
+        <input type="submit" value="submit" class="btn">
+    </form>
+
+    <!-- <input type='file' />
+<br><img id="myImg" src="#">
+<input type="button" value="submit" id="submit"> -->
+    
+    
+    <script>
+        let img = document.getElementById("img")
+        // let submit = document.getElementById("submit")
+        let input_file = document.getElementById("input_file")
+
+        // input_file.onchange = function(){
+        //     img.src = URL.createObjectURL(input_file.file[0]);
+        // }
+
+        window.addEventListener('load', function() {
+  document.querySelector('input[type="file"]').addEventListener('change', function() {
+      if (this.files && this.files[0]) {
+          var img = document.querySelector('img');
+          img.onload = () => {
+              URL.revokeObjectURL(img.src);  // no longer needed, free memory
+          }
+
+          img.src = URL.createObjectURL(this.files[0]); // set src to blob url
+      }
+  });
+  const uploadForm = document.getElementById('submit');
+
+// uploadForm.addEventListener('submit', function(event) {
+// 	event.preventDefault();
+// 	const fileInput = document.querySelector('input[type="file"]');
+// 	const file = fileInput.files[0];
+// 	if (file) {
+// 		const formData = new FormData();
+// 		formData.append('file', file);
+// 		fetch('/upload', {
+// 			method: 'POST',
+// 			body: formData
+// 		})
+// 		.then(response => response.json())
+// 		.then(data => {
+// 			console.log(data);
+// 		})
+// 		.catch(error => {
+// 			console.error(error);
+// 		});
+// 	}
+// });
+});
+    </script>
+</body>
+</html>

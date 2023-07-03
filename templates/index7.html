@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="POST" enctype="multipart/form-data">
+        <label for="file">Select an image:</label>
+        <input type="file" id="file" name="file">
+        <input type="submit" value="Upload">
+      </form>
+      <img id="preview" src={{img}} alt="Image preview" style="width: 200px; height: 200px;">
+      <h3>ket qua la : {{ketqua}}</h3>
+      <script>
+//         document.querySelector('#file').addEventListener('change', function() {
+//   var file = this.files[0];
+//   var reader = new FileReader();
+//   reader.onload = function(event) {
+//     var img = document.createElement('img');
+//     img.src = event.target.result;
+//     document.querySelector('#preview').appendChild(img);
+//   };
+//   reader.readAsDataURL(file);
+// });
+
+document.querySelector('#file').addEventListener('change', function() {
+  var file = this.files[0];
+  var reader = new FileReader();
+  reader.onload = function(event) {
+    document.querySelector('#preview').setAttribute('src', event.target.result);
+  };
+  reader.readAsDataURL(file);
+});
+      </script>
+</body>
+</html>
